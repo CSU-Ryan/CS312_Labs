@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+
 <html>
 <body>
-	<div id='main'>
-		<?php
-
-		?>
-	<div>
+    <h2>PHP Below:</h2>
+    <div id='main'>
+        <?php
+        $greeting = "Hello World!";
+        echo $greeting;
+        ?>
+    <div>
 </body>
 </html>

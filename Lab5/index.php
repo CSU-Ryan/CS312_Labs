@@ -20,5 +20,11 @@
             <input type="submit" value="Submit Name">
         </form>
     </div>
+
+    <div id="response">
+        <?php
+            echo "Your name is: " . $_POST["name"] . "!";
+        ?>
+    </div>
 </body>
 </html>

@@ -11,12 +11,14 @@
         ?>
     </div>
 
-    <form method='POST'>
-        <h2>Please input your name:</h2>
+    <div id="form">
+        <form method='POST'>
+            <h2>Please input your name:</h2>
 
-        <input type="text" name="name">
+            <input type="text" name="name">
 
-        <input type="submit" value="Submit Name">
-     </form>
+            <input type="submit" value="Submit Name">
+        </form>
+    </div>
 </body>
 </html>

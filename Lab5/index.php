@@ -8,6 +8,8 @@
         <?php
         $greeting = "Hello World!";
         echo $greeting;
+
+        $_POST["name"] = "Unsubmitted";
         ?>
     </div>
 

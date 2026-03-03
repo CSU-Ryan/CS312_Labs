@@ -31,6 +31,7 @@
         <form method='GET'>
             <h2>Are you a CS student?</h2>
             <input type="checkbox" name="CS">
+            <input type="submit" value="Submit">
         </form>
     </div>
 </body>

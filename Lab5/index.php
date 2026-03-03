@@ -29,9 +29,10 @@
 
     <div id="form2">
         <form method='GET'>
-            <h2>Are you a CS student?</h2>
+            <p>Are you a CS student?
             <input type="checkbox" name="CS">
             <input type="submit" value="Submit">
+            </p>
         </form>
     </div>
 </body>

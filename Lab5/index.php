@@ -26,5 +26,12 @@
             echo "Your name is: " . $_POST["name"] . "!";
         ?>
     </div>
+
+    <div id="form2">
+        <form method='GET'>
+            <h2>Are you a CS student?</h2>
+            <input type="checkbox" name="CS">
+        </form>
+    </div>
 </body>
 </html>

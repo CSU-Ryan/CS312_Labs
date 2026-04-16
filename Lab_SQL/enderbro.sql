@@ -7,18 +7,20 @@ CREATE TABLE enderbro_students (
 
 SHOW CREATE TABLE enderbro_students;
 
+DELIMITER //
+CREATE PROCEDURE add_students()
 BEGIN
-    DECLARE @i INT;
-    SET @i = 1;
-    WHILE @i <= 26
+    DECLARE i INT DEFAULT 1;
+    WHILE i <= 26 DO
         INSERT INTO enderbro_students VALUES (
-            ASCII(@i + 64, @i + 96, @i + 96),
-            @i + 800000000,
-            ROUND(RAND() * 2 + 2, 2);
+            ASCII(i + 64, i + 96, i + 96),
+            i + 800000000,
+            ROUND(RAND() * 2 + 2, 2)
         );
-        SET @i = @i + 1;
+        SET i = i + 1;
     END WHILE;
-END;
+END //
+DELIMITER ;
 
 SELECT * FROM enderbro_students
 ORDER BY id;
@@ -63,18 +65,20 @@ CREATE TABLE enderbro_enrollments (
     FOREIGN KEY (course_number) REFERENCES enderbro_classes(course_number)
 );
 
-BEGIN
-    DECLARE @i INT;
-    SET @i = 1;
-    WHILE @i <= 26
-        INSERT INTO enderbro_enrollments VALUES
-            (@i + 800000000, 164, 'FA23'),
-            (@i + 800000000, 214, 'SP24'),
-            (@i + 800000000, 250, 'SP25'),
-            (@i + 800000000, 312, 'SP26'),
-        SET @i = @i + 1;
-    END WHILE;
-END;
+    DELIMITER //
+    CREATE PROCEDURE enroll_students()
+    BEGIN
+        DECLARE i INT DEFAULT 1;
+        WHILE i <= 26 DO
+            INSERT INTO enderbro_enrollments VALUES
+                (i + 800000000, 164, 'FA23'),
+                (i + 800000000, 214, 'SP24'),
+                (i + 800000000, 250, 'SP25'),
+                (i + 800000000, 312, 'SP26');
+            SET i = i + 1;
+        END WHILE;
+    END //
+    DELIMITER ;
 
 SELECT COUNT(*) FROM enderbro_enrollments;
 

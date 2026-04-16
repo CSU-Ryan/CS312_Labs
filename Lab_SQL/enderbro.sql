@@ -10,7 +10,7 @@ DROP PROCEDURE IF EXISTS enroll_students;
 -- STUDENTS TABLE
 CREATE TABLE enderbro_students (
     name VARCHAR(255),
-    id INT,
+    id INT PRIMARY KEY,
     gpa DOUBLE
 );
 
@@ -40,7 +40,7 @@ ORDER BY id;
 -- CLASSES TABLE
 CREATE TABLE enderbro_classes (
     department_code VARCHAR(5),
-    course_number INT,
+    course_number INT PRIMARY KEY,
     credits INT
 );
 

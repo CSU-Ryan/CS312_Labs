@@ -8,7 +8,8 @@ CREATE TABLE enderbro_students (
 SHOW CREATE TABLE enderbro_students;
 
 BEGIN
-    DECLARE @i INT Default 1 ;
+    DECLARE @i INT;
+    SET @i = 1;
     WHILE @i <= 26
         INSERT INTO enderbro_students VALUES (
             ASCII(@i + 64, @i + 96, @i + 96),
@@ -63,7 +64,8 @@ CREATE TABLE enderbro_enrollments (
 );
 
 BEGIN
-    DECLARE @i INT DEFAULT 1;
+    DECLARE @i INT;
+    SET @i = 1;
     WHILE @i <= 26
         INSERT INTO enderbro_enrollments VALUES
             (@i + 800000000, 164, 'FA23'),

@@ -22,6 +22,8 @@ BEGIN
 END //
 DELIMITER ;
 
+CALL add_students();
+
 SELECT * FROM enderbro_students
 ORDER BY id;
 
@@ -79,6 +81,8 @@ CREATE TABLE enderbro_enrollments (
         END WHILE;
     END //
     DELIMITER ;
+
+CALL enroll_students;
 
 SELECT COUNT(*) FROM enderbro_enrollments;
 

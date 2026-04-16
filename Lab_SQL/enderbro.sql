@@ -13,7 +13,7 @@ BEGIN
     DECLARE i INT DEFAULT 1;
     WHILE i <= 26 DO
         INSERT INTO enderbro_students VALUES (
-            ASCII(i + 64, i + 96, i + 96),
+            CHAR(i + 64, i + 96, i + 96),
             i + 800000000,
             ROUND(RAND() * 2 + 2, 2)
         );

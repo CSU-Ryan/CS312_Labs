@@ -33,7 +33,7 @@ CREATE TABLE enderbro_classes (
     department_code VARCHAR(5),
     course_number INT,
     credits INT
-)
+);
 
 INSERT INTO enderbro_classes VALUES
     ('CS', 164, 4),

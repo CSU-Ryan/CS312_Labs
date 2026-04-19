@@ -1,7 +1,7 @@
 -- REMOVE HANGING VARIABLES
-DROP TABLE IF EXISTS enderbro_students;
-DROP TABLE IF EXISTS enderbro_classes;
-DROP TABLE IF EXISTS enderbro_enrollments;
+DROP TABLE IF EXISTS 'enderbro_students';
+DROP TABLE IF EXISTS 'enderbro_classes';
+DROP TABLE IF EXISTS 'enderbro_enrollments';
 
 DROP PROCEDURE IF EXISTS add_students;
 DROP PROCEDURE IF EXISTS enroll_students;

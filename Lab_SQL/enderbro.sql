@@ -8,13 +8,21 @@ DROP TABLE IF EXISTS enderbro_students;
 
 
 -- STUDENTS TABLE
+SELECT 'STEP ONE' AS ' ';
+
 CREATE TABLE enderbro_students (
     name VARCHAR(255),
     id INT PRIMARY KEY,
     gpa DOUBLE
 );
 
+
+SELECT 'STEP TWO' AS ' ';
+
 SHOW CREATE TABLE enderbro_students;
+
+
+SELECT 'STEP THREE' AS ' ';
 
 DELIMITER //
 CREATE PROCEDURE add_students()
@@ -38,6 +46,8 @@ ORDER BY id;
 
 
 -- CLASSES TABLE
+SELECT 'STEP FOUR' AS ' ';
+
 CREATE TABLE enderbro_classes (
     department_code VARCHAR(5),
     course_number INT PRIMARY KEY,
@@ -58,6 +68,9 @@ SHOW CREATE TABLE enderbro_classes;
 
 SELECT * FROM enderbro_classes;
 
+
+SELECT 'STEP FIVE' AS ' ';
+
 UPDATE enderbro_classes
 SET
     department_code = 'CS',
@@ -68,6 +81,8 @@ SELECT * FROM enderbro_classes;
 
 
 -- ENROLLMENT TABLE
+SELECT 'STEP SIX' AS ' ';
+
 CREATE TABLE enderbro_enrollments (
     student_id INT,
     course_number INT,
@@ -96,10 +111,17 @@ CALL enroll_students;
 SELECT COUNT(*) FROM enderbro_enrollments;
 
 -- JOINING TABLES
-SELECT roll.course_number, stud.name
-FROM enderbro_enrollments roll JOIN enderbro_students stud
-ON roll.student_id = stud.id
+SELECT 'STEP SEVEN' AS ' ';
+
+SELECT
+    roll.course_number,
+    stud.name
+FROM enderbro_enrollments roll
+    JOIN enderbro_students stud ON roll.student_id = stud.id
 WHERE roll.course_number = 312;
+
+
+SELECT 'STEP EIGHT' AS ' ';
 
 SELECT
     class.department_code,
@@ -110,6 +132,9 @@ FROM enderbro_classes class
 GROUP BY roll.course_number
 HAVING COUNT(roll.student_id) > 0;
 
+
+SELECT 'STEP NINE' AS ' ';
+
 SELECT students.name,
        GROUP_CONCAT(CONCAT(classes.department_code, classes.course_number) SEPARATOR ', ') AS course_list
 FROM enderbro_enrollments enroll
@@ -117,7 +142,11 @@ FROM enderbro_enrollments enroll
     JOIN enderbro_classes classes ON enroll.course_number = classes.course_number
 GROUP BY student_id;
 
-SELECT SUM(classes.credits) AS total_credits
+
+SELECT 'STEP TEN' AS ' ';
+
+SELECT
+    SUM(classes.credits) AS total_credits
 FROM enderbro_enrollments roll
     JOIN enderbro_students students ON roll.student_id = students.id
     JOIN enderbro_classes classes ON roll.course_number = classes.course_number;

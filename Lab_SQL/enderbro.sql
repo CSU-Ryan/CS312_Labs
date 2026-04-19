@@ -116,3 +116,8 @@ FROM enderbro_enrollments enroll
     JOIN enderbro_students students ON enroll.student_id = students.id
     JOIN enderbro_classes classes ON enroll.course_number = classes.course_number
 GROUP BY student_id;
+
+SELECT SUM(courses.credits) AS total_credits
+FROM enderbro_enrollments roll
+    JOIN enderbro_students students ON roll.student_id = students.id
+    JOIN enderbro_classes classes ON roll.course_number = classes.course_number;

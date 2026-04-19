@@ -150,3 +150,12 @@ SELECT
 FROM enderbro_enrollments roll
     JOIN enderbro_students students ON roll.student_id = students.id
     JOIN enderbro_classes classes ON roll.course_number = classes.course_number;
+
+
+-- CLEAN UP
+DROP PROCEDURE IF EXISTS enroll_students;
+DROP PROCEDURE IF EXISTS add_students;
+
+DROP TABLE IF EXISTS enderbro_enrollments;
+DROP TABLE IF EXISTS enderbro_classes;
+DROP TABLE IF EXISTS enderbro_students;

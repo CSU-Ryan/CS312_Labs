@@ -76,33 +76,43 @@ CREATE TABLE enderbro_enrollments (
     FOREIGN KEY (course_number) REFERENCES enderbro_classes(course_number)
 );
 
-    DELIMITER //
-    CREATE PROCEDURE enroll_students()
-    BEGIN
-        DECLARE i INT DEFAULT 1;
-        WHILE i <= 26 DO
-            INSERT INTO enderbro_enrollments VALUES
-                (i + 800000000, 164, 'FA23'),
-                (i + 800000000, 214, 'SP24'),
-                (i + 800000000, 250, 'SP25'),
-                (i + 800000000, 312, 'SP26');
-            SET i = i + 1;
-        END WHILE;
-    END //
-    DELIMITER ;
+DELIMITER //
+CREATE PROCEDURE enroll_students()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    WHILE i <= 26 DO
+        INSERT INTO enderbro_enrollments VALUES
+            (i + 800000000, 164, 'FA23'),
+            (i + 800000000, 214, 'SP24'),
+            (i + 800000000, 250, 'SP25'),
+            (i + 800000000, 312, 'SP26');
+        SET i = i + 1;
+    END WHILE;
+END //
+DELIMITER ;
 
 CALL enroll_students;
 
 SELECT COUNT(*) FROM enderbro_enrollments;
 
 -- JOINING TABLES
-SELECT *
+SELECT roll.course_number, stud.name
 FROM enderbro_enrollments roll JOIN enderbro_students stud
 ON roll.student_id = stud.id
 WHERE roll.course_number = 312;
 
-SELECT class.department_code, class.course_number, class.credits
-FROM enderbro_classes class JOIN enderbro_enrollments roll
-ON class.course_number = roll.course_number
+SELECT
+    class.department_code,
+    class.course_number,
+    class.credits
+FROM enderbro_classes class
+    JOIN enderbro_enrollments roll ON class.course_number = roll.course_number
 GROUP BY roll.course_number
 HAVING COUNT(roll.student_id) > 0;
+
+SELECT students.name,
+       GROUP_CONCAT(CONCAT(classes.department_code, classes.course_number) SEPARATOR ', ') AS course_list
+FROM enderbro_enrollments enroll
+    JOIN enderbro_students students ON enroll.student_id = students.id
+    JOIN enderbro_classes classes ON enroll.course_number = classes.course_number
+GROUP BY student_id;
